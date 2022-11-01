@@ -8,13 +8,13 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaGem, FaCanadianMapleLeaf } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import { GiAgave } from 'react-icons/gi';
 import { MdDashboard } from 'react-icons/md';
-import { FaCanadianMapleLeaf } from 'react-icons/fa'
 
 import './SideBar.scss';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
     return (
@@ -51,6 +51,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                         // suffix={<span className="badge red">New</span>}
                         >
                             Dashboard
+                            <Link to="/admins" />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -59,7 +60,10 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                             title='Featuers'
                             icon={<FaGem />}
                         >
-                            <MenuItem>Quản lý Users</MenuItem>
+                            <MenuItem>
+                                Quản lý Users
+                                <Link to="/admins/manage-users" />
+                            </MenuItem>
                             <MenuItem>Quản lý Bài Quiz</MenuItem>
                             <MenuItem>Quản lý Câu Hỏi</MenuItem>
                         </SubMenu>
