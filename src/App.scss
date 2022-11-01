@@ -14,7 +14,8 @@ body {
       .nav-link {
         &.active {
           //thêm dấu & đối với các class ngang hàng
-          color: red;
+          color: rgb(0, 153, 255);
+          font-weight: bold;
         }
       }
     }
