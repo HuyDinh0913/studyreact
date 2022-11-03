@@ -75,7 +75,7 @@ const ModalCreateUser = (props) => {
                 size='xl'
                 backdrop='static'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Đăng ký thông tin</Modal.Title>
+                    <Modal.Title>Thêm mới người dùng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/* <form class="row g-3">
