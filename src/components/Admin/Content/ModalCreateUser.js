@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc';
 // import hinhthe from './../../../assets/anh-the-1.jpg';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ModalCreateUser = (props) => {
     const { show, setShow } = props;
@@ -18,7 +19,27 @@ const ModalCreateUser = (props) => {
         setPreviewImg("");
     };
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
     const handleSubmitCreateUser = async () => {
+        //Validate
+        const isValidEmail = validateEmail(email);
+        if (!isValidEmail) {
+            toast.error('Invalid Email');
+            return;
+        }
+        if (!password) {
+            toast.error('Invalid Password');
+            return;
+        }
+
+        //Submit Data
         const data = new FormData();
         data.append('email', email);
         data.append('password', password);
@@ -27,7 +48,15 @@ const ModalCreateUser = (props) => {
         data.append('userImage', image); //lay ben postman (api)
 
         let res = await axios.post('http://localhost:8081/api/v1/participant', data)
-        console.log(">>> check respont: ", res)
+        console.log(">>> check respont: ", res.data)
+        if (res.data && res.data.EC === 0) {
+            toast.success('Create User Success')
+            handleClose();
+        }
+        if (res.data && res.data.EC !== 0) {
+            toast.error(res.data.EM)
+            // handleClose();
+        }
     }
 
     const handleLoadImage = (event) => {
@@ -46,10 +75,6 @@ const ModalCreateUser = (props) => {
 
     return (
         <>
-            {/* <Button variant="primary" onClick={handleShow}>
-                Guest Infomation Check
-            </Button> */}
-
             <Modal
                 className='modal-add-user'
                 show={show}
