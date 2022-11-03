@@ -29,3 +29,21 @@
         }
     }
 }
+
+.manage-user-container {
+    padding: 10px;
+
+    .title {}
+
+    .users-content {
+        .btn-add-new {
+            button {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+            }
+        }
+    }
+
+    .table-users-container {}
+}
