@@ -28,7 +28,7 @@ const Login = (props) => {
         <div className="login-container">
             <div className='header'>
                 <span>Don't have an account yet?</span>
-                <button>Sign up</button>
+                <button onClick={() => { navigate('/regis') }}>Sign up</button>
             </div>
             <div className='title col-4 mx-auto'>
                 TodoQuez
@@ -44,7 +44,7 @@ const Login = (props) => {
                         className='form-control'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
-                    ></input>
+                    />
                 </div>
                 <div className='form-group'>
                     <label>Password</label>
@@ -53,7 +53,7 @@ const Login = (props) => {
                         className='form-control'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                    ></input>
+                    />
                 </div>
                 <span>Forgot password?</span>
                 <div>

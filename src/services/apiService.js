@@ -39,4 +39,8 @@ const postLogin = (email, password) => {
     return axios.post('api/v1/login', { email, password }); //tương đương cách viết email: email, password: password
 }
 
-export { postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserPaginate, postLogin }
+const postRegis = (email, username, password) => {
+    return axios.post('api/v1/register', { email, username, password }); //tương đương cách viết email: email, password: password
+}
+
+export { postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserPaginate, postLogin, postRegis }
